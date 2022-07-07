@@ -22,36 +22,8 @@ mongoose
   .then(() => console.log("database connection is success"))
   .catch((e) => console.log("error connection database :", e));
 
-// --- --- --- --- --- --- SCHEMAS (Mongoose) --- --- --- --- --- --- --- ---
-
-const ProductSchema = mongoose.Schema({
-  name: String,
-  image: String,
-  countStock: Number,
-});
-
-// --- --- --- --- --- --- MODELS (Mongo) --- --- --- --- --- --- --- --- ---
-
-const Product = mongoose.model("Product", ProductSchema);
-
-// --- --- --- --- --- --- Routes (Get, Post, Delete, Put) --- --- --- --- ---
-
-// GET
-// GET ID
-// POST
-
-app.post(
-  ("/",
-  (req, res) => {
-    const { name, image, countStock } = req.body;
-    const newProduct = new Product({ name, image, countStock });
-    newProduct
-      .save()
-      .then((product) => res.send(console.log(product)))
-      .catch((err) => console.log(err));
-  })
-);
-app.get(`${api}/products`, (req, res) => res.send("getting is working"));
+// IMPORTING ROUTE HERE
+app.use(`${api}/products`, require("./routers/products"));
 
 app.listen(port, () => {
   console.log(`Success! Your application is running on port ${port}.`);
