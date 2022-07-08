@@ -9,12 +9,30 @@ const { Product } = require("../models/product");
 
 route.post("/", (req, res) => {
   // Requiero al front end la data que ingreso el usuario en el body
-  const { name, image, countStock } = req.body;
+  const {
+    name,
+    image,
+    images,
+    brand,
+    price,
+    countStock,
+    category,
+    rating,
+    isFeatured,
+    dateCreated,
+  } = req.body;
   // Lo guardos en variables
   const newProduct = new Product({
     name,
     image,
+    images,
+    brand,
+    price,
     countStock,
+    category,
+    rating,
+    isFeatured,
+    dateCreated,
   });
 
   newProduct

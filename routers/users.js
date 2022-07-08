@@ -3,41 +3,41 @@ const route = express.Router();
 
 // --- --- --- --- --- --- Routes (Get, Post, Delete, Put) --- --- --- --- ---
 
-const { Order } = require("../models/order");
+const { User } = require("../models/user");
 
 // POST
 
 route.post("/", (req, res) => {
   // Requiero al front end la data que ingreso el usuario en el body
   const {
-    orderItems,
-    shippingAdress,
+    name,
+    email,
+    password,
     city,
     zip,
     country,
     phone,
-    status,
-    totalPrice,
-    user,
-    dateOrder,
+    street,
+    apartment,
+    isAdmin,
   } = req.body;
   // Lo guardos en variables
-  const newProduct = new Order({
-    orderItems,
-    shippingAdress,
+  const newUser = new User({
+    name,
+    email,
+    password,
     city,
     zip,
     country,
     phone,
-    status,
-    totalPrice,
-    user,
-    dateOrder,
+    street,
+    apartment,
+    isAdmin,
   });
 
-  newOrders
+  newUser
     .save()
-    .then((orders) => res.status(200).json(orders))
+    .then((user) => res.status(200).json(user))
     .catch((err) =>
       res.status(500).json({
         request: succes,
@@ -49,9 +49,9 @@ route.post("/", (req, res) => {
 // GET
 
 route.get("/", async (req, res) => {
-  const getOrders = await Order.find();
-  getOrders
-    ? res.status(200).json(getOrders)
+  const getProduct = await User.find();
+  getUser
+    ? res.status(200).json(getUser)
     : res.status(500).json({
         request: unsuccess,
       });

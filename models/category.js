@@ -1,13 +1,18 @@
-
 const mongoose = require("mongoose");
 
 // --- --- --- --- --- --- SCHEMAS (Mongoose) --- --- --- --- --- --- --- ---
 
 const CategorySchema = mongoose.Schema({
-  name: String,
-  color: String,
-  icon: String,
-  image: String,
+  name: {
+    type: String,
+    require: true,
+  },
+  color: {
+    type: String,
+  },
+  icon: {
+    type: String,
+  },
 });
 
 // --- --- --- --- --- --- MODELS (Mongo) --- --- --- --- --- --- --- --- ---

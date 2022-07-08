@@ -9,17 +9,16 @@ const { OrderItem } = require("../models/orderItem");
 
 route.post("/", (req, res) => {
   // Requiero al front end la data que ingreso el usuario en el body
-  const { name, image, countStock } = req.body;
+  const { product, quantity } = req.body;
   // Lo guardos en variables
-  const newProduct = new OrderItem({
-    name,
-    image,
-    countStock,
+  const newItem = new OrderItem({
+    product,
+    quantity,
   });
 
-  newProduct
+  newItem
     .save()
-    .then((product) => res.status(200).json(product))
+    .then((item) => res.status(200).json(item))
     .catch((err) =>
       res.status(500).json({
         request: succes,
@@ -31,9 +30,9 @@ route.post("/", (req, res) => {
 // GET
 
 route.get("/", async (req, res) => {
-  const getProduct = await OrderItem.find();
-  getProduct
-    ? res.status(200).json(getProduct)
+  const getItem = await OrderItem.find();
+  getItem
+    ? res.status(200).json(getItem)
     : res.status(500).json({
         request: unsuccess,
       });

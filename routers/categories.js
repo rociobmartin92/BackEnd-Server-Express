@@ -3,27 +3,24 @@ const route = express.Router();
 
 // --- --- --- --- --- --- Routes (Get, Post, Delete, Put) --- --- --- --- ---
 
-const { Product: Category } = require("../models/category");
+const { Category } = require("../models/category");
 
 // POST
 
 route.post("/", (req, res) => {
-  // Requiero al front end la data que ingreso el usuario en el body
-  const { name, image, countStock } = req.body;
-  // Lo guardos en variables
-  const newProduct = new Category({
+  const { name, color, icon } = req.body;
+  const newCategory = new Category({
     name,
-    image,
-    countStock,
+    color,
+    icon,
   });
 
-  newProduct
+  newCategory
     .save()
-    .then((product) => res.status(200).json(product))
-    .catch((err) =>
-      res.status(500).json({
-        request: succes,
-        error: err,
+    .then((category) => res.status(200).json(category))
+    .catch(() =>
+      res.status(400).json({
+        error: "Category can not be created",
       })
     );
 });
@@ -31,11 +28,22 @@ route.post("/", (req, res) => {
 // GET
 
 route.get("/", async (req, res) => {
-  const getProduct = await Category.find();
-  getProduct
-    ? res.status(200).json(getProduct)
-    : res.status(500).json({
-        request: unsuccess,
+  const getCategory = await Category.find();
+  getCategory
+    ? res.status(200).json(getCategory)
+    : res.status(400).json({
+        error: "Category can not be getted",
+      });
+});
+
+route.delete("/:id", async (req, res) => {
+  const removeCategory = await Category.findByIdAndRemove(req.params.id);
+  removeCategory
+    ? res.status(200).json({
+        message: "Category succefully removed",
+      })
+    : res.status(400).json({
+        message: "Category not found!",
       });
 });
 

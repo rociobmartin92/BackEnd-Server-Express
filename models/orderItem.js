@@ -1,12 +1,10 @@
-
 const mongoose = require("mongoose");
 
 // --- --- --- --- --- --- SCHEMAS (Mongoose) --- --- --- --- --- --- --- ---
 
 const SingleOrderSchema = mongoose.Schema({
-  name: String,
-  image: String,
-  countStock: Number,
+  product: String,
+  quantity: Number,
 });
 
 // --- --- --- --- --- --- MODELS (Mongo) --- --- --- --- --- --- --- --- ---

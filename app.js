@@ -24,6 +24,10 @@ mongoose
 
 // IMPORTING ROUTE HERE
 app.use(`${api}/products`, require("./routers/products"));
+app.use(`${api}/categories`, require("./routers/categories"));
+app.use(`${api}/orders`, require("./routers/orders"));
+app.use(`${api}/orderItems`, require("./routers/orderItems"));
+app.use(`${api}/user`, require("./routers/users"));
 
 app.listen(port, () => {
   console.log(`Success! Your application is running on port ${port}.`);
