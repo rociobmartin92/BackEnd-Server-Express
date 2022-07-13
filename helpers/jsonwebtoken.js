@@ -10,10 +10,11 @@ require("dotenv/config");
 
 // APIS WHICH CAN BE ACCESSED BY ANYONE
 const unprotected = [
-  "/api/v1/users/login",
-  "/api/v1/users/register",
-  "/api/v1/users/get/count",
-  { url: /\/api\/v1\/products(.*)/, methods: ["GET", "OPTIONS"] },
+  /\/api\/v1\/users(.*)/,
+  /\/api\/v1\/orders(.*)/,
+  /\/api\/v1\/orderItems(.*)/,
+  /\/api\/v1\/products(.*)/,
+  // { url: /\/api\/v1\/products(.*)/, methods: ["GET", "OPTIONS"] },
   { url: /\/api\/v1\/categories(.*)/, methods: ["GET", "OPTIONS"] },
 ];
 
