@@ -36,15 +36,42 @@ route.get("/", async (req, res) => {
       });
 });
 
-route.delete("/:id", async (req, res) => {
-  const removeCategory = await Category.findByIdAndRemove(req.params.id);
-  removeCategory
-    ? res.status(200).json({
-        message: "Category succefully removed",
-      })
-    : res.status(400).json({
-        message: "Category not found!",
-      });
+// DELETE
+
+route.delete("/:id", (req, res) => {
+  Category.findByIdAndRemove(req.params.id)
+    .then((response) => {
+      response
+        ? res.status(200).json({
+            message: "Category succefully removed",
+          })
+        : res.status(400).json({
+            message: "Category not found!",
+          });
+    })
+    .catch((err) =>
+      res.status(500).json({ message: "internal server error", err: err })
+    );
 });
 
+
+// PUT
+
+route.put("/:id", (req, res) => {
+  Category.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    color: req.body.color,
+    icon: req.body.icon,
+  })
+    .then((response) =>
+      response
+        ? res.status(200).json({ message: "Category succefully updated" })
+        : res.status(400).json({
+            message: "Category not found!",
+          })
+    )
+    .catch((err) =>
+      res.status(500).json({ message: "internal server error", err: err })
+    );
+});
 module.exports = route;
