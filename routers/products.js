@@ -36,6 +36,7 @@ route.post("/", async (req, res) => {
     : res.status(400).json({
         message: "New product has been created",
       });
+      
 });
 
 // req.query es un objeto de solicitud que se completa con cadenas de consulta de solicitud que se encuentran en una URL.
