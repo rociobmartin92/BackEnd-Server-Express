@@ -1,20 +1,22 @@
 const mongoose = require("mongoose");
 
-// --- --- --- --- --- --- SCHEMAS (Mongoose) --- --- --- --- --- --- --- ---
-
 const CategorySchema = mongoose.Schema({
-  name: {
+  breackfast: {
     type: String,
     require: true,
   },
-  color: {
+  dessert: {
     type: String,
+    require: true,
   },
-  icon: {
+  healthy: {
     type: String,
+    require: true,
+  },
+  fast: {
+    type: String,
+    require: true,
   },
 });
-
-// --- --- --- --- --- --- MODELS (Mongo) --- --- --- --- --- --- --- --- ---
 
 exports.Category = mongoose.model("Category", CategorySchema);

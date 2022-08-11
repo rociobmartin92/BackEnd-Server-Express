@@ -1,23 +1,26 @@
 {
-  "name": "mern",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "backend for mernapp",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "nodemon": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js"
   },
-  "repository": "https://github.com/rociobmartin92/BackEnd-Server.git",
-  "author": "Rocio <martinrocio.1992@gmail.com>",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rociobmartin92/BackEnd-Server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rociobmartin92/BackEnd-Server/issues"
+  },
+  "homepage": "https://github.com/rociobmartin92/BackEnd-Server#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "express-jwt": "^7.7.5",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.3",
-    "morgan": "^1.10.0",
+    "mongoose": "^6.5.2",
     "nodemon": "^2.0.19"
-  },
-  "devDependencies": {}
+  }
 }
